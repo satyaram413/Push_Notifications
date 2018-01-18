@@ -67,6 +67,34 @@ swreg.showNotification("Successfully Subscribed (from SW) ",options);
     new Notification("Successfully Subscribed",options);
 */
 }
+
+
+
+function configuresubscription()
+{
+if(!('serviceWorker' in navigator))
+{
+    return;
+}
+navigator.serviceWorker.ready
+.then(function(swreg)
+{
+return swreg.pushManager.getSubscription();
+})
+.then(function(sub)
+{
+if(sub==null)
+{
+//create new server
+}
+else{
+//we have a subscription
+}
+});
+}
+
+
+
 function askforNotificationPermission()
 {
  
@@ -78,11 +106,17 @@ function askforNotificationPermission()
         console.log("No Notification Permission granted");
     }
     else{
-        displayconfirmnotification();
+        configuresubscription();
+
+        //displayconfirmnotification();
     }
 });
 }
-if('Notification' in window)
+
+
+
+
+if('Notification' in window && 'serviceWorker' in navigator)
 {
     
         enablenotification.addEventListener('click',askforNotificationPermission);
