@@ -35,7 +35,16 @@ function displayconfirmnotification()
             dir:'ltr',
             lang:'en-US', //BCP 47
             vibrate:[100,50,200],
-            badge:'/images/icons/app-icon-96x96.png'
+            //tag will reduce redundancy i.e if a notification is repetitive then it wont show to user multiple times.
+//renotify will vibrate the phone, but no new notification will be dispalayed 
+            tag:'confirm-notification',
+            badge:'/images/icons/app-icon-96x96.png',
+            renotify:true,
+            action:[
+                {
+                    action: 'confirm'
+                }
+            ]
         };
         // console.log("Right Here");
 navigator.serviceWorker.ready
