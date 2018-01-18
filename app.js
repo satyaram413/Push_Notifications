@@ -76,6 +76,7 @@ if(!('serviceWorker' in navigator))
 {
     return;
 }
+var reg;
 navigator.serviceWorker.ready
 .then(function(swreg)
 {
@@ -85,7 +86,16 @@ return swreg.pushManager.getSubscription();
 {
 if(sub==null)
 {
-//create new server
+//create new subscription
+
+reg.pushManager.subscribe({
+    //push notifications will only be visible to the user
+    //security mechanism that we will identify our own app server, this is own server, this is valid server
+    //  to validate the server we use vapid
+    //vapid has public key and private key, the private key is stored on private server and is not visible through naked eyes or easily
+    
+    userVisibleOnly:true,
+});
 }
 else{
 //we have a subscription
