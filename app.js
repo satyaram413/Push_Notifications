@@ -40,13 +40,20 @@ function displayconfirmnotification()
             tag:'confirm-notification',
             badge:'/images/icons/app-icon-96x96.png',
             renotify:true,
-            action:[
+            actions:[
                 {
-                    action: 'confirm'
+                    action: 'confirm',
+                    title:'Okay',
+                    icon:'/images/icons/app-icon-96x96.png'
+                },
+                {
+                action: 'Cancel',
+                title:'Cancel',
+                icon:'/images/icons/app-icon-96x96.png'
                 }
             ]
         };
-        // console.log("Right Here");
+      
 navigator.serviceWorker.ready
 .then(function(swreg)
 
